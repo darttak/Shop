@@ -1,12 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    </div>
+    <div class="loading" v-if="loading">
+      <img src="./assets/Spinner-1s-200px.gif" alt />
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      loading: false
+    };
+  },
+  created() {
+    this.$eventBus.$on("loadingStatus", payload => {
+      this.loading = payload;
+    });
+  }
+};
+</script>
 
 <style>
 #app {
