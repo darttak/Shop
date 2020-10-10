@@ -37,7 +37,7 @@
                 <th>Delete</th>
             </tr>
             <tr :key="i" v-for="(newSupplier, i) in newSupplierArray" >
-                <td >{{newSupplier.name}a}</td>
+                <td >{{newSupplier.name}}</td>
                 <td>{{newSupplier.description}}</td>
                 <td><button class="delete" @click="removeSupplier(i)">Delete</button></td>
             </tr>
@@ -52,6 +52,7 @@ export default {
         return {
             showingAddModal: false,
             newSupplier: {
+                id: "",
                 name: "",
                 description: ""
             },
@@ -68,7 +69,7 @@ export default {
               alert("Tell something about it")
         return;
       }
-
+        this.newSupplier.id = Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100);
       this.newSupplierArray.push(this.newSupplier);
       this.newSupplier = {
                 name: "",
@@ -89,7 +90,7 @@ export default {
   mounted() {
     if (localStorage.getItem('newSupplierArray')) {
       try {
-        this.cats = JSON.parse(localStorage.getItem('newSupplierArray'));
+        this.newSupplierArray = JSON.parse(localStorage.getItem('newSupplierArray'));
       } catch(e) {
         localStorage.removeItem('newSupplierArray');
       }

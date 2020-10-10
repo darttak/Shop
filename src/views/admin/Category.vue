@@ -53,6 +53,7 @@ export default {
             showingAddModal: false,
             showingDeleteModal: false, 
             newCategory: {
+                id: "",
                 name: "",
                 description: ""
             },
@@ -69,14 +70,13 @@ export default {
               alert("Tell something about it")
         return;
       }
-
+        this.newCategory.id = Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100);
       this.newCategoryArray.push(this.newCategory);
       this.newCategory = {
                 name: "",
                 description: ""
             };
       this.saveCategory();
-        console.log(this.newCategoryArray);
       },
        removeCategory(x) {
       this.newCategoryArray.splice(x, 1);
@@ -88,9 +88,10 @@ export default {
     }
   },
   mounted() {
+      console.log(localStorage.getItem('newCategoryArray'))
     if (localStorage.getItem('newCategoryArray')) {
       try {
-        this.cats = JSON.parse(localStorage.getItem('newCategoryArray'));
+        this.newCategoryArray = JSON.parse(localStorage.getItem('newCategoryArray'));
       } catch(e) {
         localStorage.removeItem('newCategoryArray');
       }
