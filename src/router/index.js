@@ -4,6 +4,8 @@ import Home from "../views/Home.vue";
 // import Admin from "../views/Admin.vue";
 // import Login from "../views/Login.vue";
 import Category from "../views/admin/Category.vue"
+import Supplier from "../views/admin/Supplier.vue"
+import Product from "../views/admin/Product.vue"
 
 Vue.use(VueRouter);
 
@@ -31,6 +33,16 @@ const routes = [
           path: 'category',
           name: 'admin.category',
         component: Category
+        },
+        {
+          path: 'supplier',
+          name: 'admin.supplier',
+        component: Supplier
+        },
+        {
+          path: 'product',
+          name: 'admin.product',
+        component: Product
         }
       ]
   }

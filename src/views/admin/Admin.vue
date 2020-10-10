@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <h1>My shop</h1>
-            <a href="#">Logout</a>
+            <a class="logout" href="#" @click="logoutNow()">Logout</a>
         </div>
         <div class="sidebar">
             <ul class="nav">
@@ -33,10 +33,24 @@ export default {
         return {
             
         }
+  },
+  methods: {
+      logoutNow() {
+          localStorage.setItem('token', '');
+          this.$router.push({name: 'login'})
+      }
   }
 }
 </script>
 
 <style scoped>
-
+    .logout{
+        float: right;
+    }
+    .nav{
+        float: left;
+    }
+    ul{
+        list-style-type: none;
+    }
 </style>

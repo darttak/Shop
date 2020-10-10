@@ -39,6 +39,7 @@ export default {
         password: ""
       }
     };
+   
   },
   methods: {
     loginNow() {
